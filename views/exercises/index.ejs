@@ -11,7 +11,13 @@
     <br><br>
     <div><a href="/justdoit/exercise">individual exercises</a></div>
     <div>
-        <%= body %>
+        <%= data %>
     </div>
+        <% if (user) { %>
+            <a href="/logout"><button>Log Out</button> </a>
+        <% } else { %>
+            <a href="/auth/google"><button>Login with Google</button></a>
+        <% } %>
+   <%# <a href="/auth/google"><button class='login'>Login with Google</button></a> %>
 </body>
 </html>
