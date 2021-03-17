@@ -9,7 +9,16 @@ router.get('/', exercisesCtrl.index)
 
 router.get('/exercise', exercisesCtrl.show)
 
+router.get('/myworkout', exercisesCtrl.showMyWorkOut);
 
+
+router.post('/myworkout', function(req, res){
+  res.send('thanks for posting')
+})
+
+router.delete('/myworkout', function(req, res){
+  res.send('deleted');
+})
 /* 
 // Insert this middleware for routes that require a logged in user
 router.post('/facts', isLoggedIn, studentsCtrl.addFact);

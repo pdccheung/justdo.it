@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        max-width: 100%;
+      }
+    </style>
     <title>Document</title>
-</head>
-<body>
-    Welcome to my Exercise page
-    <br><br>
-    <div><a href="/justdoit/exercise">individual exercises</a></div>
+  </head>
+  <body>
+    Main Exercise Page 
+    <br /><br />
+    <div><a href="/exercises/exercise">individual exercises</a></div>
+    <div><a href="/exercises/myworkout">my Workout</a></div>
     <div>
-        <%= data %>
+      <% for (let obj of results) { %>
+      <img src="<%= obj.image %>" alt="Exercise <%= obj.exercise %>" />
+      <form action="/exercises/myworkout" method="POST">
+        
+          <button type="submit">Add to my workout</button>
+  
+      </form>
+      
+     <% } %>
     </div>
-        <% if (user) { %>
-            <a href="/logout"><button>Log Out</button> </a>
-        <% } else { %>
-            <a href="/auth/google"><button>Login with Google</button></a>
-        <% } %>
-   <%# <a href="/auth/google"><button class='login'>Login with Google</button></a> %>
-</body>
+    <% if (user) { %>
+    <a href="/logout"><button>Log Out</button> </a>
+    <% } else { %>
+    <a href="/auth/google"><button>Login with Google</button></a>
+    <% } %> <%#
+    <a href="/auth/google"><button class="login">Login with Google</button></a>
+    %>
+  </body>
 </html>

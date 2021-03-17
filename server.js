@@ -6,6 +6,8 @@ var logger = require('morgan');
 let session = require('express-session');
 let passport = require('passport');
 
+var methodOverride = require('method-override');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 let exercisesRouter = require('./routes/exercises')
@@ -33,7 +35,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
