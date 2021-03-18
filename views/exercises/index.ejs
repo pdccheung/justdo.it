@@ -1,32 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-        max-width: 100%;
-      }
-    </style>
-    <title>Document</title>
-  </head>
-  <body>
-    Main Exercise Page 
-    <br /><br />
+<%- include('../../partials/header') %>
+
+<%- include('../../partials/body-top') %>
+
+
     <div><a href="/exercises/myworkout" alt="myworkout">my Workout</a></div>
-      <% if (user) { %>
-    <a href="/logout"><button>Log Out</button> </a>
-    <% } else { %>
-    <a href="/auth/google"><button>Login with Google</button></a>
-    <% } %> <%#
-    <a href="/auth/google"><button class="login">Login with Google</button></a>
-    %>  
-    <div>
       <% for (let obj of results) { %>
     <form action="/exercises/myworkout" method="POST">
           <button name="id" value="<%= obj.id %>" type="submit">Add to my workout</button>
@@ -38,5 +15,6 @@
      <% }} %> <br><br>
     </div>
 
-  </body>
-</html>
+    <%- include('../../partials/body-bottom') %>
+
+    <%- include('../../partials/footer') %>

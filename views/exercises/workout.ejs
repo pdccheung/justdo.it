@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My work Out</title>
-  </head>
-  <body>
+<%- include('../../partials/header') %>
+
+<%- include('../../partials/body-top') %>
+
     <form action="/exercises/newworkout" method="POST">
       <div>
         <label for="plan-name"> Workout Plan name:</label> <br />
@@ -21,6 +16,7 @@
         <label for="exercises">Exercise</label><br />
         <select name="exercises" id="">
             <label for="exercise">
+              <option disabled selected value> -- select an Exercise -- </option>
                 <% for (let r of results){ %>
                     <option value="<%=r.id%>"><%=r.name%></option>
                 <% }%>
@@ -38,5 +34,7 @@
     <form action="/exercises/myworkout?_method=DELETE" method="POST">
       <button type="submit" class="delete">Delete from my plan</button>
     </form>
-  </body>
-</html>
+
+
+    <%- include('../../partials/body-bottom') %>
+    <%- include('../../partials/footer') %>

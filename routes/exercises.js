@@ -4,18 +4,21 @@ var router = express.Router();
 
 
 let exercisesCtrl = require('../controllers/exercises')
+let workoutCrtl = require('../controllers/workout')
+
 
 router.get('/', exercisesCtrl.index)
 
 
 
-router.get('/myworkout', exercisesCtrl.showMyWorkOut);
+router.get('/myworkout', workoutCrtl.showMyWorkOut);
+router.post('/myworkout', workoutCrtl.updateWorkOut);
+router.post('/newworkout', workoutCrtl.createNew );
+router.delete('/myworkout', workoutCrtl.deleteWorkOut);
 
-router.post('/myworkout', exercisesCtrl.updateWorkOut);
-router.post('/newworkout', exercisesCtrl.createNew );
 
-router.delete('/myworkout', exercisesCtrl.deleteWorkOut)
-router.get('/:id', exercisesCtrl.show)
+
+router.get('/:id', exercisesCtrl.show);
 
 /* 
 // Insert this middleware for routes that require a logged in user

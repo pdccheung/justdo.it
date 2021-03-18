@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise</title>
-</head>
-<body>
+
+    <%- include('../../partials/header') %>
+    <%- include('../../partials/body-top') %>
+
     <a href="/exercises"><button>Back to all exercises</button></a><br><br>
     <div><b>Exercise Info: </b></div><br><br>
     
@@ -16,5 +11,6 @@
     <% if (exercise.image != undefined){ %>
         <img src="<%=exercise.image%>" alt="<%=exercise.name%>">
     <% } %> <br><br>
-</body>
-</html>
+
+    <%- include('../../partials/body-bottom') %>
+    <%- include('../../partials/footer') %>
