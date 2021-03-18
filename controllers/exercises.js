@@ -136,11 +136,10 @@ async function showMyWorkOut (req, res){
       res.send('deleted')
   }
 
-
  async function createNew(req, res){
     console.log(req.body)
     console.log(req.user)
-    try{
+    try {
     await Workout.create(
         {
             planName: req.body.planName,

@@ -1,22 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="../public/stylesheets/" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <div>click <a href="/exercises">here</a> to access the website</div>
-    <% if (user) { %>
-      <a href="/logout"><button>Log Out</button> </a>
-      <% } else { %>
-      <a href="/auth/google"><button>Login with Google</button></a>
-      <% } %> <%#
-      <a href="/auth/google"><button class="login">Login with Google</button></a>
-      %>
+    <div class="topnav">
+      <a class="active" href="#home">Home</a>
+      <a href="#about">Exercises</a>
+      <a href="#contact">My Workout</a>
+      <div class="login-container">
+        <div>click <a href="/exercises">here</a> to access the website</div>
+        <% if (user) { %>
+        <a href="/logout" class="button">Log Out</a>
+        <% } else { %>
+        <a href="/auth/google" class="button is-danger">Login with Google</a>
+        <% } %>
+      </div>
+    </div>
+    <!-- class="block on each sibling div for a consistent margin between them"-->
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Hello World</h1>
+        <p class="subtitle">My first website with <strong>Bulma</strong>!</p>
+        <div class="columns is-mobile is-8 is-vcentered is-centered">
+          <div class="column is-danger">
+            <p class="is-danger">First column</p>
+          </div>
+          <div class="column is-danger is-half">
+            <p class="is-danger">Second column</p>
+          </div>
+          <div class="column is-danger">
+            <p class="is-danger">Third column</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
-  <footer>
-    This project was duct taped togethered by Philip Cheung, with source material from wger API. 
-  </footer>
 </html>
