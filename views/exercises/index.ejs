@@ -18,25 +18,25 @@
   <body>
     Main Exercise Page 
     <br /><br />
-    <div><a href="/exercises/exercise">individual exercises</a></div>
-    <div><a href="/exercises/myworkout">my Workout</a></div>
-    <div>
-      <% for (let obj of results) { %>
-      <img src="<%= obj.image %>" alt="Exercise <%= obj.exercise %>" />
-      <form action="/exercises/myworkout" method="POST">
-        
-          <button type="submit">Add to my workout</button>
-  
-      </form>
-      
-     <% } %>
-    </div>
-    <% if (user) { %>
+    <div><a href="/exercises/myworkout" alt="myworkout">my Workout</a></div>
+      <% if (user) { %>
     <a href="/logout"><button>Log Out</button> </a>
     <% } else { %>
     <a href="/auth/google"><button>Login with Google</button></a>
     <% } %> <%#
     <a href="/auth/google"><button class="login">Login with Google</button></a>
-    %>
+    %>  
+    <div>
+      <% for (let obj of results) { %>
+    <form action="/exercises/myworkout" method="POST">
+          <button name="id" value="<%= obj.id %>" type="submit">Add to my workout</button>
+    </form>
+        Exercise ID: <%= obj.id %> <br>
+        <a href="/exercises/<%=obj.id%>"> Exercise Name: <%= obj.name %> </a><br>
+        <%if (obj.image != undefined ){ %>
+      <a href="/exercises/<%=obj.id%>"> <img src="<%= obj.image %>" alt="Exercise <%=obj.id%>" /> </a>
+     <% }} %> <br><br>
+    </div>
+
   </body>
 </html>

@@ -6,7 +6,8 @@ const Schema = mongoose.Schema
 let exerciseSchema = new Schema({
     refId: Number,
     description: String,
-    muscle: [String],}
+    muscles: [String],
+}, 
  {
     timestamps: true,
 })

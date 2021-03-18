@@ -7,6 +7,14 @@
     <title>Exercise</title>
 </head>
 <body>
-    below is the specific exercise that you've requested
+    <a href="/exercises"><button>Back to all exercises</button></a><br><br>
+    <div><b>Exercise Info: </b></div><br><br>
+    
+    Workout ID: <%= exercise.id %> <br>
+    Name of <%= exercise.name %> <br>
+    Description: <%- exercise.description %> <br>
+    <% if (exercise.image != undefined){ %>
+        <img src="<%=exercise.image%>" alt="<%=exercise.name%>">
+    <% } %> <br><br>
 </body>
 </html>

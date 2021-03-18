@@ -1,13 +1,15 @@
 var mongoose = require('mongoose');
-const Schema = mongoose.Schema
-const member = require('./member');
+const Schema = mongoose.Schema;
 
-let workoutSchema = new Schema({
+
+const workoutSchema = new Schema({
     planName: String,
-    member: [member],
-    exercise: {type: Schema.Types.ObjectId, ref: 'Exercise' },
+    member: [{type: Schema.Types.ObjectId, 
+            ref: 'Member'}],
+    exercises: [{type: Schema.Types.ObjectId, 
+                ref: 'Exercise'}],
 }, {
-    timestamps: true,
+    timrsestamps: true,
 })
 
 module.exports = mongoose.model('Workout', workoutSchema);

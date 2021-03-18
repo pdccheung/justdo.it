@@ -7,18 +7,16 @@ let exercisesCtrl = require('../controllers/exercises')
 
 router.get('/', exercisesCtrl.index)
 
-router.get('/exercise', exercisesCtrl.show)
+
 
 router.get('/myworkout', exercisesCtrl.showMyWorkOut);
 
+router.post('/myworkout', exercisesCtrl.updateWorkOut);
+router.post('/newworkout', exercisesCtrl.createNew );
 
-router.post('/myworkout', function(req, res){
-  res.send('thanks for posting')
-})
+router.delete('/myworkout', exercisesCtrl.deleteWorkOut)
+router.get('/:id', exercisesCtrl.show)
 
-router.delete('/myworkout', function(req, res){
-  res.send('deleted');
-})
 /* 
 // Insert this middleware for routes that require a logged in user
 router.post('/facts', isLoggedIn, studentsCtrl.addFact);
@@ -29,8 +27,6 @@ function isLoggedIn(req, res, next) {
   if ( req.isAuthenticated() ) return next();
   res.redirect('/auth/google');
 } */
-
-
 
 
 module.exports = router;

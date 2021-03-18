@@ -8,6 +8,13 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <div>click <a href="/exercises">here</a> to access the website</div>
+    <% if (user) { %>
+      <a href="/logout"><button>Log Out</button> </a>
+      <% } else { %>
+      <a href="/auth/google"><button>Login with Google</button></a>
+      <% } %> <%#
+      <a href="/auth/google"><button class="login">Login with Google</button></a>
+      %>
   </body>
   <footer>
     This project was duct taped togethered by Philip Cheung, with source material from wger API. 

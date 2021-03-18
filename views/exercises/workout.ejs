@@ -1,18 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My work Out</title>
-</head>
-<body>
-    <p>this is my workout plan</p>
-
-    
-    <form action="/exercises/myworkout?_method=DELETE" method="POST">
-    <button type="submit" class="delete" >Delete from my plan</button>
+  </head>
+  <body>
+    <form action="/exercises/newworkout" method="POST">
+      <div>
+        <label for="plan-name"> Workout Plan name:</label> <br />
+        <input
+          type="text"
+          name="planName"
+          id="plan-name"
+          placeholder="e.g leg day"
+          required/><br />
+        <label for="member"> Member name: </label> <br />
+        <input type="text" name="member" id="member" /> <br />
+        <label for="exercises">Exercise</label><br />
+        <select name="exercises" id="">
+            <label for="exercise">
+                <% for (let r of results){ %>
+                    <option value="<%=r.id%>"><%=r.name%></option>
+                <% }%>
+            </label>
+        </select>
+      </div>
+      <button>
+          Create Plan
+        </button>
     </form>
-    
-</body>
+    <p>this is my workout plan</p>
+    Name: List of Exercises:
+
+
+    <form action="/exercises/myworkout?_method=DELETE" method="POST">
+      <button type="submit" class="delete">Delete from my plan</button>
+    </form>
+  </body>
 </html>
