@@ -39,6 +39,11 @@ async function addNewEx(req, res){
   })
 }
 
+router.post("/addMem", function (req, res){
+  console.log(res.body);
+  res.send("hi");
+})
+
 
 // Google OAuth login route
 router.get(

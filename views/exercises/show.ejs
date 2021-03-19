@@ -5,8 +5,8 @@
     <a href="/exercises"><button>Back to all exercises</button></a><br><br>
     <div><b>Exercise Info: </b></div><br><br>
     
-    Workout ID: <%= exercise.id %> <br>
-    Name of <%= exercise.name %> <br>
+    Workout ID: <%= exercise.refId %> <br>
+    Name of Exercise <%=exercise.name %> <br>
     Description: <%- exercise.description %> <br>
     <% if (exercise.image != undefined){ %>
         <img src="<%=exercise.image%>" alt="<%=exercise.name%>">

@@ -7,11 +7,14 @@
 
 
       <% for (let obj of results) { %>
-    <form action="/exercises/myworkout" method="POST">
+            <% if(user) { %>
+                   <form action="/exercises/myworkout" method="POST">
           <button name="id" value="<%= obj.id %>" type="submit">Add to my workout</button>
     </form>
-        Exercise ID: <%= obj.id %> <br>
-        <a href="/exercises/<%=obj.id%>"> Exercise Name: <%= obj.name %> </a><br>
+            <% } %>
+
+        Exercise ID: <%= obj.refId %> <br>
+        Exercise Name: <a href="/exercises/<%=obj.id%>"> <%= obj.name %> </a><br>
         <%if (obj.image != undefined ){ %>
       <a href="/exercises/<%=obj.id%>"> <img src="<%= obj.image %>" alt="Exercise <%=obj.id%>" /> </a>
      <% }} %> <br><br>

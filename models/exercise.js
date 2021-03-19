@@ -1,9 +1,7 @@
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
-
-
-let exerciseSchema = new Schema({
+const exerciseSchema = new Schema({
     refId: Number,
     category: Number,
     name: String,
@@ -15,9 +13,5 @@ let exerciseSchema = new Schema({
  {
     timestamps: true,
 })
-
-
-
-
 
 module.exports = mongoose.model('Exercise', exerciseSchema);
