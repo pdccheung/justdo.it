@@ -25,14 +25,16 @@
           Create Plan
         </button>
     </form><br><br>
-  <% } %>
-    <p>this is my workout plan</p>
-    Name: 
-    
-    List of Exercises:
-
   
-
+    <p>my workout plan</p><br>
+    <% for(let w of workout){ %>
+      <p>
+    Name: <%= w.planName%> <br>
+    
+    List of Exercises:  <%= w.exercise  %> <br><br>
+  </p>
+    <% } %>
+<% } %>
     <form action="/exercises/myworkout?_method=DELETE" method="POST">
       <button type="submit" class="delete">Delete from my plan</button>
     </form>
