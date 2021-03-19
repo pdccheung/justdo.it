@@ -21,4 +21,4 @@
 **FUTURE ENHANCEMENTS**:rocket:
 * Everything... specifically: 
 * Workout plan database
-* 
+* pagination of exercises
