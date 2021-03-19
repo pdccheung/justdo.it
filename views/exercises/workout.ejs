@@ -2,7 +2,7 @@
 
 <%- include('../../partials/body-top') %>
 
-    <form action="/exercises/newworkout" method="POST">
+    <form id="new-plan" action="/exercises/newworkout" method="POST">
       <div>
         <label for="plan-name"> Workout Plan name:</label> <br />
         <input
@@ -11,8 +11,6 @@
           id="plan-name"
           placeholder="e.g leg day"
           required/><br />
-        <label for="member"> Member name: </label> <br />
-        <input type="text" name="member" id="member" /> <br />
         <label for="exercises">Exercise</label><br />
         <select name="exercises" id="">
             <label for="exercise">
@@ -26,7 +24,7 @@
       <button>
           Create Plan
         </button>
-    </form>
+    </form><br><br>
     <p>this is my workout plan</p>
     Name: List of Exercises:
 

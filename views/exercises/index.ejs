@@ -1,9 +1,11 @@
 <%- include('../../partials/header') %>
 
 <%- include('../../partials/body-top') %>
+<form action="/exercises/update" method="POST">
+      <button class="buttons">UPDATE</button>
+</form>
 
 
-    <div><a href="/exercises/myworkout" alt="myworkout">my Workout</a></div>
       <% for (let obj of results) { %>
     <form action="/exercises/myworkout" method="POST">
           <button name="id" value="<%= obj.id %>" type="submit">Add to my workout</button>

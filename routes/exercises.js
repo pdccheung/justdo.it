@@ -9,7 +9,7 @@ let workoutCrtl = require('../controllers/workout')
 
 router.get('/', exercisesCtrl.index)
 
-
+router.post('/update', exercisesCtrl.updateExercises);
 
 router.get('/myworkout', workoutCrtl.showMyWorkOut);
 router.post('/myworkout', workoutCrtl.updateWorkOut);

@@ -5,8 +5,12 @@ const Schema = mongoose.Schema
 
 let exerciseSchema = new Schema({
     refId: Number,
+    category: Number,
+    name: String,
     description: String,
-    muscles: [String],
+    muscles: [Number],
+    equipment: [Number],
+    image: String,
 }, 
  {
     timestamps: true,

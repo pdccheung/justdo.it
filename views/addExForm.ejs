@@ -1,0 +1,72 @@
+<%- include('../partials/header') %>
+
+<%- include('../partials/body-top') %>
+<form action="/addEx" class="" method="POST">
+<div class="field">
+    <label class="label">refId</label>
+    <div class="control">
+      <input class="input" type="number" name = "refId" placeholder="Text input">
+    </div>
+  </div>
+  
+<%# delete below %>
+  <div class="field">
+    <label class="label">muscles</label>
+    <div class="control">
+      <input class="input" type="number" name = "muscles" placeholder="Text input">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">equipment</label>
+    <div class="control">
+      <input class="input" type="number" name = "equipment" placeholder="Text input">
+    </div>
+  </div>
+  <%# delete above %>
+
+  <div class="field">
+    <label class="label">category</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-success" type="number" name="category" placeholder="Text input" value="">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+    <p class="help is-success">This username is available</p>
+  </div>
+
+  <div>
+    <input class="input" type="text" name= "description" placeholder="description">
+  </div>
+  <%# tpype is email, no name%>
+  <div class="field">
+    <label class="label">name</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input is-danger" type="text" name="name" placeholder="Email input" value="hello@">
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+    </div>
+    <p class="help is-danger">This email is invalid</p>
+  </div>
+  
+  
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link">Submit</button>
+    </div>
+    <div class="control">
+      <button class="button is-link is-light">Cancel</button>
+    </div>
+  </div>
+</form>
+<%- include('../partials/body-bottom') %>
+
+<%- include('../partials/footer') %>

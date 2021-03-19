@@ -63,17 +63,20 @@ function deleteWorkOut(req, res) {
 
 async function createNew(req, res) {
   console.log(req.body);
-  console.log(req.user);
-  try {
-    await Workout.create({
-      planName: req.body.planName,
-      member: req.user.id,
-      exercises: req.body.exercises,
-    });
-  } catch (err) {
-    res.send(err);
-  }
-  res.send("thanks");
-  // await Workout.create(req.body)
-  // res.redirect('./myworkout')
-}
+  console.log(req.user); 
+  
+  if (req.user) {
+      try{ 
+        let workout = await new Workout({
+        planName: req.body.planName,
+        member: req.user.id,
+        exercises: req.body.exercises,})
+    workout.save(function(err) {
+        if (err) return res.redirect('/exercises/workout');
+        res.redirect('/exercises')
+    })
+   } catch(err){
+       res.send (err + "please sign in to create plan")
+   }
+};}
+   

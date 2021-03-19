@@ -3,14 +3,13 @@ let fetch = require('node-fetch');
 const { deserializeUser } = require('passport');
 let Member = require('../models/member');
 let Workout = require('../models/workout');
+let Exercise = require('../models/exercise');
 
 module.exports = {
     index,
     show,
-    // showMyWorkOut,
-    // updateWorkOut,
-    // deleteWorkOut,
-    // createNew,
+    updateExercises,
+
 }
 const api_url = "https://wger.de/api/v2/";
 const appendStr = "exercise/?language=2&limit=227&offset=0";
@@ -44,14 +43,13 @@ async function index(req, res){
     )
 }
 
-
 async function show(req, res){ 
     console.log(req.params.id);
-    let response = await fetch(api_url + "exercise/?language=2&limit=227&offset=0");
+    let response = await fetch(api_url + appendStr);
     let results = (await response.json()).results;
     
     let response2 = 
-    await fetch(api_url + "exerciseimage/?format=json&is_main=True&limit=100&offset=0")
+    await fetch(api_url + imgStr)
     let results2 = (await response2.json()).results;
     console.log(results2.length);
 
@@ -62,7 +60,7 @@ async function show(req, res){
             }
         }
     }
-
+    
     let exercise;
     for (let res of results){
         if (res.id == req.params.id){
@@ -77,82 +75,38 @@ async function show(req, res){
     });
 }
 
+async function updateExercises(req, res){
+    let response = await fetch(api_url + appendStr);
+    let results = (await response.json()).results;
+    
+    let response2 = 
+    await fetch(api_url + imgStr)
+    let results2 = (await response2.json()).results;
 
-/* 
-function addFact(req, res, next) {
-    req.user.facts.push(req.body);
-    req.user.save(function(err) {
-      res.redirect('/students');
-    });
-  } */
+    for (let img of results2) {
+        for (let ex of results) {
+            if (ex.id == img.exercise) {
+                ex.image = img.image
+            } 
+            
+        }
+    } 
 
-
-
-
-// async function showMyWorkOut (req, res){
-//     let response = 
-//     await fetch(api_url + appendStr);
-//     let results = (await response.json()).results;
-//     let response2 = 
-//     await fetch(api_url + imgStr)
-//     let results2 = (await response2.json()).results;
-//     for (let a of results2) {
-//         for (let b of results) {
-//             if (b.id == a.exercise) {
-//                 b.image = a.image;
-//             }
-//         }
-//     }
-//     res.render('exercises/workout', {
-//         results: results,
-//         user: req.user,
-//     }
-//     );
-// }
-
-//  async function updateWorkOut (req, res) {
-//     let response = 
-//     await fetch(api_url + appendStr);
-//     let results = (await response.json()).results;
-
-//     let response2 = 
-//     await fetch(api_url + imgStr)
-//     let results2 = (await response2.json()).results;
-
-
-//     for (let a of results2) {
-//         for (let b of results) {
-//             if (b.id == a.exercise) {
-//                 b.image = a.image;
-//             }
-//         }
-//     }
-//     console.log("the value is: ", req.body)
-//     res.render('exercises/workout', {
-//         results: results,
-//         body: req.body,
-//         user: req.user,
-//     } )
-//   }
-
-//   function deleteWorkOut (req, res){
-//       res.send('deleted')
-//   }
-
-//  async function createNew(req, res){
-//     console.log(req.body)
-//     console.log(req.user)
-//     try {
-//     await Workout.create(
-//         {
-//             planName: req.body.planName,
-//             member: req.user.id,
-//             exercises: req.body.exercises,
-//         }
-//     )} catch(err){
-//         res.send(err);
-//     }
-//     res.send('thanks')
-//     // await Workout.create(req.body)
-//     // res.redirect('./myworkout')
-// }
+    for (let ex of results){
+        let el = await Exercise.findOne({refId : ex.id})
+        if(!el){
+            try{ 
+                await Exercise.create({
+                    refId: ex.id,
+                    category: ex.category, 
+                    description: ex.description, 
+                    name: ex.name, 
+                    muscles: ex.muscles, 
+                    equipment: ex.equipment, 
+                    image: ex.image,
+                }) 
+            } catch(err){err => console.log(err); return;};
+        }
+    }
+res.redirect("/exercises")
+} 
