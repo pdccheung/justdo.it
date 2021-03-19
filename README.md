@@ -22,3 +22,5 @@
 * Everything... specifically: 
 * Workout plan database
 * pagination of exercises
+* categorization of workout
+* Search functionality
