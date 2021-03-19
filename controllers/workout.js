@@ -21,11 +21,6 @@ const imgStr = "exerciseimage/?format=json&is_main=True&limit=100&offset=0";
 async function showMyWorkOut(req, res) {
   let exercises = await Exercise.find();
   let workout = await Workout.find();
-  for (let w of workout){
-    if (w.member == req.user){
-      return w 
-    } return 
-  }
   
   res.render("exercises/workout", {
     results: exercises,
