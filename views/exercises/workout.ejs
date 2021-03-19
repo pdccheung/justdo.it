@@ -1,7 +1,7 @@
 <%- include('../../partials/header') %>
 
 <%- include('../../partials/body-top') %>
-
+  <% if (user) { %>
     <form id="new-plan" action="/exercises/newworkout" method="POST">
       <div>
         <label for="plan-name"> Workout Plan name:</label> <br />
@@ -21,13 +21,17 @@
             </label>
         </select>
       </div>
-      <button>
+      <button name="member" value="<%=user.id%>">
           Create Plan
         </button>
     </form><br><br>
+  <% } %>
     <p>this is my workout plan</p>
-    Name: List of Exercises:
+    Name: 
+    
+    List of Exercises:
 
+  
 
     <form action="/exercises/myworkout?_method=DELETE" method="POST">
       <button type="submit" class="delete">Delete from my plan</button>

@@ -4,13 +4,13 @@
 
     <a href="/exercises"><button>Back to all exercises</button></a><br><br>
     <div><b>Exercise Info: </b></div><br><br>
-    
-    Workout ID: <%= exercise.refId %> <br>
-    Name of Exercise <%=exercise.name %> <br>
-    Description: <%- exercise.description %> <br>
     <% if (exercise.image != undefined){ %>
-        <img src="<%=exercise.image%>" alt="<%=exercise.name%>">
-    <% } %> <br><br>
+        <img src="<%=exercise.image%>" alt="<%= exercise.name %>">
+    <% } %> <br>
+    <b>Workout ID:</b>  <%= exercise.refId %> <br>
+    <b>Name of Exercise:</b> <%=exercise.name %> <br>
+    <b>Description:</b>  <%- exercise.description %> <br>
+    <br><br>
 
     <%- include('../../partials/body-bottom') %>
     <%- include('../../partials/footer') %>

@@ -3,6 +3,7 @@ let fetch = require("node-fetch");
 const { deserializeUser } = require("passport");
 let Member = require("../models/member");
 let Workout = require("../models/workout");
+let Exercise = require('../models/exercise');
 
 module.exports = {
   showMyWorkOut,
@@ -18,65 +19,40 @@ const imgStr = "exerciseimage/?format=json&is_main=True&limit=100&offset=0";
 
 
 async function showMyWorkOut(req, res) {
-  let response = await fetch(api_url + appendStr);
-  let results = (await response.json()).results;
-  let response2 = await fetch(api_url + imgStr);
-  let results2 = (await response2.json()).results;
-  for (let a of results2) {
-    for (let b of results) {
-      if (b.id == a.exercise) {
-        b.image = a.image;
-      }
-    }
+  let exercises = await Exercise.find();
+  let workout = await Workout.find();
+  for (let w of workout){
+    if (w.member == req.user){
+      return w 
+    } return 
   }
+  
   res.render("exercises/workout", {
-    results: results,
+    results: exercises,
     user: req.user,
   });
 }
 
-async function updateWorkOut(req, res) {
-  let response = await fetch(api_url + appendStr);
-  let results = (await response.json()).results;
 
-  let response2 = await fetch(api_url + imgStr);
-  let results2 = (await response2.json()).results;
-
-  for (let a of results2) {
-    for (let b of results) {
-      if (b.id == a.exercise) {
-        b.image = a.image;
-      }
-    }
-  }
-  console.log("the value is: ", req.body);
-  res.render("exercises/workout", {
+async function updateWorkOut(req, res){
+  let exercises = await Exercise.find();
+    console.log("the value is: ", req.body);
+    res.render("exercises/workout", {
     results: results,
     body: req.body,
     user: req.user,
-  });
+})
 }
+
+
 
 function deleteWorkOut(req, res) {
   res.send("deleted");
 }
 
 async function createNew(req, res) {
-  console.log(req.body);
-  console.log(req.user); 
+  await Workout.create(req.body);
+  res.redirect('/exercises/myworkout');
+}
+
   
-  if (req.user) {
-      try{ 
-        let workout = await new Workout({
-        planName: req.body.planName,
-        member: req.user.id,
-        exercises: req.body.exercises,})
-    workout.save(function(err) {
-        if (err) return res.redirect('/exercises/workout');
-        res.redirect('/exercises')
-    })
-   } catch(err){
-       res.send (err + "please sign in to create plan")
-   }
-};}
-   

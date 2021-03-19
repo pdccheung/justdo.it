@@ -14,9 +14,9 @@
             <% } %>
 
         Exercise ID: <%= obj.refId %> <br>
-        Exercise Name: <a href="/exercises/<%=obj.id%>"> <%= obj.name %> </a><br>
+        Exercise Name: <a href="/exercises/<%=obj.refId%>"> <%= obj.name %> </a><br>
         <%if (obj.image != undefined ){ %>
-      <a href="/exercises/<%=obj.id%>"> <img src="<%= obj.image %>" alt="Exercise <%=obj.id%>" /> </a>
+      <a href="/exercises/<%=obj.refId%>"> <img src="<%= obj.image %>" alt="Exercise <%=obj.id%>" /> </a>
      <% }} %> <br><br>
     </div>
 
